@@ -1,5 +1,12 @@
 {
   "compilerOptions": {
+    "baseUrl": "./src",
+    "paths": {
+      "app/components": ["./components/index.ts"],
+      "app/components/*": ["./components/*"],
+      "app/functions": ["./functions"],
+      "app/functions/*": ["./functions/*"],
+    },
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
