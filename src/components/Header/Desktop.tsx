@@ -4,6 +4,7 @@ import useMenu from 'app/components/Header/useMenu'
 import Image from 'next/image'
 import Link from 'next/link'
 import React, { FC } from 'react'
+import { NavigationItem } from './NavigationItem'
 
 const HEADER_HEIGHT = 64
 
@@ -20,8 +21,7 @@ const Desktop: FC = () => {
                   <Image src="https://app.sushi.com/images/logo.svg" alt="Sushi logo" width="24px" height="24px" />
                 </div>
                 {menu.map((node) => {
-                  return `${node.key}.`
-                  // return <NavigationItem node={node} key={node.key} />
+                  return <NavigationItem node={node} key={node.key} />
                 })}
               </div>
             </div>
