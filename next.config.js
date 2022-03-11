@@ -11,6 +11,23 @@ const nextConfig = {
   publicRuntimeConfig: {
     breakpoints: screens,
   },
+  async redirects() {
+    return [
+      {
+        source: '/',
+        destination: '/swap',
+        permanent: true,
+      },
+    ]
+  },
+  async rewrites() {
+    return [
+      {
+        source: '/swap',
+        destination: '/legacy/swap',
+      },
+    ]
+  },
 }
 
 module.exports = nextConfig
