@@ -1,8 +1,9 @@
-import type { NextPage } from 'next'
 import Image from 'next/image'
 import styles from '../../../styles/Home.module.css'
+import { SwapLayout } from 'app/layouts/SwapLayout'
 
-const Home: NextPage = () => {
+/* @ts-ignore TYPE NEEDS FIXING */
+const Home = () => {
   return (
     <div className={styles.container}>
 
@@ -45,4 +46,5 @@ const Home: NextPage = () => {
   )
 }
 
+Home.Layout = SwapLayout('swap-page')
 export default Home
