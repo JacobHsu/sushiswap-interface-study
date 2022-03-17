@@ -2,9 +2,11 @@ import React, { Fragment, useEffect } from 'react'
 import { RecoilRoot } from 'recoil'
 import '../styles/globals.css'
 // import type { AppProps } from 'next/app'
+import getLibrary from 'app/functions/getLibrary'
 import DefaultLayout from 'app/layouts/Default'
 import { i18n } from '@lingui/core'
 import { I18nProvider } from '@lingui/react'
+import { Web3ReactProvider } from '@web3-react/core'
 
 // @ts-ignore TYPE NEEDS FIXING
 function MyApp({ Component, pageProps }) {
@@ -21,15 +23,17 @@ function MyApp({ Component, pageProps }) {
   return (
     <>
       <I18nProvider i18n={i18n} forceRenderOnLocaleChange={false}>
-        <RecoilRoot>
-          <Provider>
-            <Layout>
-              <Guard>
-                <Component {...pageProps} />
-              </Guard>
-            </Layout>
-          </Provider>
-        </RecoilRoot>
+        <Web3ReactProvider getLibrary={getLibrary}>
+          <RecoilRoot>
+            <Provider>
+              <Layout>
+                <Guard>
+                  <Component {...pageProps} />
+                </Guard>
+              </Layout>
+            </Provider>
+          </RecoilRoot>
+        </Web3ReactProvider>
       </I18nProvider>
     </>
   )
