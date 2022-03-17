@@ -7,6 +7,9 @@ import DefaultLayout from 'app/layouts/Default'
 import { i18n } from '@lingui/core'
 import { I18nProvider } from '@lingui/react'
 import { Web3ReactProvider } from '@web3-react/core'
+import dynamic from 'next/dynamic'
+
+const Web3ProviderNetwork = dynamic(() => import('../components/Web3ProviderNetwork'), { ssr: false })
 
 // @ts-ignore TYPE NEEDS FIXING
 function MyApp({ Component, pageProps }) {
@@ -24,15 +27,17 @@ function MyApp({ Component, pageProps }) {
     <>
       <I18nProvider i18n={i18n} forceRenderOnLocaleChange={false}>
         <Web3ReactProvider getLibrary={getLibrary}>
-          <RecoilRoot>
-            <Provider>
-              <Layout>
-                <Guard>
-                  <Component {...pageProps} />
-                </Guard>
-              </Layout>
-            </Provider>
-          </RecoilRoot>
+          <Web3ProviderNetwork getLibrary={getLibrary}>
+            <RecoilRoot>
+              <Provider>
+                <Layout>
+                  <Guard>
+                    <Component {...pageProps} />
+                  </Guard>
+                </Layout>
+              </Provider>
+            </RecoilRoot>
+          </Web3ProviderNetwork>
         </Web3ReactProvider>
       </I18nProvider>
     </>
